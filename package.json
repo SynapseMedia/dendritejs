@@ -1,0 +1,24 @@
+{
+  "name": "dendritejs",
+  "version": "0.0.1",
+  "description": "Retrieval and validation of SEP-001 standard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SynapseMedia/dendritejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SynapseMedia/dendritejs/issues"
+  },
+  "homepage": "https://github.com/SynapseMedia/dendritejs#readme",
+  "devDependencies": {
+    "standard": "^17.1.0",
+    "standard-version": "^9.5.0",
+    "ts-standard": "^12.0.2"
+  }
+}
