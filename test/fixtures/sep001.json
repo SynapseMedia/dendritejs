@@ -1,0 +1,26 @@
+{
+    "header": {
+      "alg": "ES256",
+      "jwk": {
+        "alg": "ES256",
+        "crv": "P-256",
+        "kty": "EC",
+        "use": "sig",
+        "x": "v6dEOAoc6yqgwz0tqdS9MuKNDViU1JM-Z330v2Vfcy4",
+        "y": "XFdf6GP_TMm7U2P0xJ1G5OfustcfOeHfcvxrQsyQOyo"
+      },
+      "typ": "application/vnd.apple.mpegurl"
+    },
+    "payload": {
+      "s": {
+        "cid": "bafyjvzacdk2wwmnvht43v73pgkixyy4waplwbdb42273xsydbiiq",
+        "path": "index.m3u8"
+      },
+      "d": {
+        "title": "Nucleus the SDK",
+        "description": "Building block for multimedia decentralization",
+        "contributors": ["Array"]
+      },
+      "t": { "size": 141, "length": 5280 }
+    }
+  }
