@@ -1,7 +1,7 @@
 import { CID } from 'multiformats'
 import { describe, expect, it } from 'vitest'
 
-import { createCompact, createDagJose } from '../src/decoders';
+import { createCompact, createDagJose, getDecoderFromCodec, Codec } from '../src/decoders';
 import fixturePayload from './fixtures/payload.json'
 
 import type {IPFS} from 'ipfs-core'
@@ -124,8 +124,22 @@ describe('Decoders', () => {
                 }).rejects.toThrowError('Unexpected payload: The claims "s", "t" or "d" are not present in payload.');
 
             });
+        })
 
 
+        it("should return the expected decoder based on input codec", ()=> {
+            const dagJose = getDecoderFromCodec(Codec.DagJose)
+            const compact = getDecoderFromCodec(Codec.Raw)
+
+            expect(dagJose).toBe(createDagJose) 
+            expect(compact).toBe(createCompact) 
+        })
+
+        it("should throws error if invalid codec is provided", ()=> {
+            expect(()=>{
+                // @ts-expect-error
+                getDecoderFromCodec("0x00")
+            }).toThrowError()
         })
 })
 

@@ -1,6 +1,6 @@
 import Ajv from 'ajv'
-import schemaTpl from '@/validate/schema.json'
 import { calculateJwkThumbprint, JWK } from 'jose'
+import schemaTpl from '@/validate/schema.json'
 
 const ajv = new Ajv({ allErrors: true })
 export const validStandard = ajv.compile(schemaTpl)
@@ -24,13 +24,13 @@ export const validPayloadClaims = (payload: any): any => {
 
 /**
  * Calculates the fingerprint from a JSON Web Key (JWK).
- * 
+ *
  * @param jwk - The JWK object for which to calculate the fingerprint.
  * @returns The fingerprint of the JWK as a hexadecimal string.
  * @throws {Error} If the JSON Web Key is not valid.
  */
 export const fingerprintFromJWK = async (jwk: JWK): Promise<string> => {
   const b64Thumbprint = await calculateJwkThumbprint(jwk)
-  // convert the base64 thumbprint to a hexadecimal string 
+  // convert the base64 thumbprint to a hexadecimal string
   return Buffer.from(b64Thumbprint, 'base64').toString('hex')
 }

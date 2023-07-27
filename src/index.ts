@@ -10,10 +10,13 @@
  * import {create} from 'ipfs-core'
  * import dendrite from 'dendritejs'
  *
- * const compact = 'bafkreidb7uq7vdxhmkstdfgky5gh7vh5t7rordkoamjvf4o6buubbdu3da'
+ * const compact = 'bafkreifphflffiwa2ocqy4skadu6whhqiv2ax2rfqzcysj65uzplfbv6za'
  * const node = await create()
  * const decoder = dendrite(node)
  * const decoded = await decoder(compact)
+ * 
+ * const expectedFingerprint = 'aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a'
+ * const validFingerprint = decoded.validate(expectedFingerprint)
  * ...
  * ```
  */
@@ -78,14 +81,14 @@ export function dendrite (node: IPFS): Creator<string, Promise<Impulse>> {
     const decoder = getDecoderFromCodec(codec)(node)
     const decoded = await decoder(cid)
 
-    // delete decoded.standard.payload.d.title
     // Check if the metadata obtained comply with the standard schema
-    console.log(validStandard({}))
     if (!validStandard(decoded.standard)) {
-      throw new TypeError('CID resolves an invalid SEP001 standard implementation.')
+      throw new TypeError(
+        `CID resolves an invalid SEP001 standard implementation.
+        ${validStandard.errors?.map((e, i) => `"${i + 1} - ${e.message}"\n\t`).join('')}
+        `
+      )
     }
-
-    // TODO verificar que validStandard resuelva correctamente
 
     return {
       type: () => decoded.standard.header.typ,
@@ -104,7 +107,7 @@ export function dendrite (node: IPFS): Creator<string, Promise<Impulse>> {
   // BAD CIDs above!
 
   // const dagJose = 'bagcqcerann63enqn2vssm6gko624gojakrswyppm56rao7m6e6vfnvtcxzha'
-  const compact ='bafkreifphflffiwa2ocqy4skadu6whhqiv2ax2rfqzcysj65uzplfbv6za'
+  const compact = 'bafkreifphflffiwa2ocqy4skadu6whhqiv2ax2rfqzcysj65uzplfbv6za'
 
   // ipfs node
   const node = await create()
@@ -116,5 +119,5 @@ export function dendrite (node: IPFS): Creator<string, Promise<Impulse>> {
   console.log(decoded.type()) // the media mime type represented in metadata
   console.log(decoded.metadata()) // payload {structural,descriptive,technical} metadata
   // fingerprint verification with shared fingerprint
-  console.log(decoded.validate('aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a')) 
+  console.log(decoded.validate('aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a'))
 })()

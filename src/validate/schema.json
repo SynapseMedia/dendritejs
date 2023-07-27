@@ -1,6 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SEP-001 schema",
+  "type": "object",
+  "required": [
+    "header",
+    "payload"
+  ],
+  "properties": {
+    "header": {
+      "$ref": "#/definitions/Header"
+    },
+    "payload": {
+      "$ref": "#/definitions/Payload"
+    }
+  },
   "definitions": {
     "JWK": {
       "additionalProperties": {},
@@ -39,7 +52,7 @@
       "type": "object"
     },
     "Descriptive": {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "description": "Descriptive metadata MUST represent information that describes the content of a multimedia resource.",
       "properties": {
         "description": {
@@ -64,11 +77,15 @@
         },
         "typ": {
           "type": "string"
+        },
+        "alg": {
+          "type": "string"
         }
       },
       "required": [
         "typ",
-        "jwk"
+        "jwk",
+        "alg"
       ],
       "type": "object"
     },
@@ -93,23 +110,6 @@
       ],
       "type": "object"
     },
-    "SEP001": {
-      "additionalProperties": false,
-      "description": "SEP-001 standard representation.",
-      "properties": {
-        "header": {
-          "$ref": "#/definitions/Header"
-        },
-        "payload": {
-          "$ref": "#/definitions/Payload"
-        }
-      },
-      "required": [
-        "header",
-        "payload"
-      ],
-      "type": "object"
-    },
     "Structural": {
       "additionalProperties": false,
       "description": "Structural metadata MUST represent information that describes the internal structure of a multimedia resource.",
@@ -127,7 +127,7 @@
       "type": "object"
     },
     "Technical": {
-      "additionalProperties": false,
+      "additionalProperties": true,
       "description": "Technical metadata MUST represent information that describes the technical characteristics of a multimedia resource.",
       "properties": {
         "height": {

@@ -6,7 +6,7 @@ import type { IPFS } from 'ipfs-core-types'
  * List of allowed codecs based on codec code reference.
  * @see {@link https://github.com/multiformats/multicodec/blob/master/table.csv reference}.
  */
-enum Codec {
+export enum Codec {
   Raw = '0x55',
   DagJose = '0x85'
 }
@@ -19,7 +19,7 @@ enum Codec {
  * @return The matched decoder creator.
  * @throws if the provided codec is not supported.
  */
-function getDecoderFromCodec (codec: Codec): Creator<IPFS, Decoder> {
+export function getDecoderFromCodec (codec: Codec): Creator<IPFS, Decoder> {
   // Map record of allowed decoders.
   const codecDecoders = {
     [Codec.DagJose]: createDagJose,
@@ -34,5 +34,4 @@ function getDecoderFromCodec (codec: Codec): Creator<IPFS, Decoder> {
   return codecDecoders[codec]
 }
 
-export type { Codec }
-export { getDecoderFromCodec, createCompact, createDagJose }
+export { createCompact, createDagJose }
