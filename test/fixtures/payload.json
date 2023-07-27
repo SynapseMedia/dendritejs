@@ -1,0 +1,20 @@
+{
+    "s": {
+        "cid": "bafyjvzacdk2wwmnvht43v73pgkixyy4waplwbdb42273xsydbiiq",
+        "path": "index.m3u8"
+    },
+    "d": {
+        "title": "Nucleus the SDK",
+        "description": "Building block for multimedia decentralization",
+        "contributors": [
+            "Jacob",
+            "Geo",
+            "Dennis",
+            "Mark"
+        ]
+    },
+    "t": {
+        "size": 141,
+        "length": 5280.0
+    }
+}
