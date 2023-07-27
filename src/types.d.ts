@@ -61,12 +61,13 @@ declare global {
     payload: Payload
   }
 
-  /**
-   * Decoders are the heart of dendrite library.
-   * They specify a function that receives a CID and return a verified SEP001 implementation.
-   * */
-  type Decoder = (cid: CID) => Promise<SEP001>
-  type DecoderCreator = (node: IPFS) => Decoder
+  interface Decoded {
+    standard: SEP001
+    fingerprint: string
+  }
+
+  type Creator<Param, Return> = (param: Param) => Return
+  type Decoder = (cid: CID) => Promise<Decoded>
 
 }
 

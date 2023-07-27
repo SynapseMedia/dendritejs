@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": [],
     "strict": true,
     "target": "ESNext",
     "module": "ES2020",
@@ -16,6 +15,13 @@
     "removeComments": true,
     "verbatimModuleSyntax": false,
     "skipLibCheck": true,
+    "baseUrl": "./",
+    "types": ["node"],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src/*",

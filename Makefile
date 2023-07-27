@@ -13,11 +13,11 @@ bootstrap: install
 
 .PHONY: test ## run tests
 test:
-	npx jest --verbose --config=jest.config.json
+	npx vitest -c vitest.config.ts
 
 .PHONY: testcov ## run test coverage
 testcov:
-	npx jest --verbose --config=jest.config.json --coverage
+	npx vitest run --coverage
 	
 .PHONY: build ## compile typescript to /build
 build:
@@ -38,7 +38,7 @@ install:
 
 .PHONY: dev ## run script
 dev: 
-	npx vite-node src/index.ts
+	npx vite-node -c vitest.config.ts src/index.ts
 
 .PHONY: format ## auto-format js source files
 format:

@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SEP-001 schema",
   "definitions": {
     "JWK": {
       "additionalProperties": {},
@@ -27,6 +28,14 @@
           "type": "string"
         }
       },
+      "required": [
+        "x",
+        "y",
+        "alg",
+        "kty",
+        "use",
+        "crv"
+      ],
       "type": "object"
     },
     "Descriptive": {
@@ -93,47 +102,11 @@
         },
         "payload": {
           "$ref": "#/definitions/Payload"
-        },
-        "signature": {
-          "anyOf": [
-            {
-              "items": {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "properties": {
-                  "length": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "length"
-                ],
-                "type": "object"
-              },
-              "type": "array"
-            },
-            {
-              "additionalProperties": {
-                "type": "string"
-              },
-              "properties": {
-                "length": {
-                  "type": "number"
-                }
-              },
-              "required": [
-                "length"
-              ],
-              "type": "object"
-            }
-          ]
         }
       },
       "required": [
         "header",
-        "payload",
-        "signature"
+        "payload"
       ],
       "type": "object"
     },

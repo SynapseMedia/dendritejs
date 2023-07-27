@@ -1,5 +1,6 @@
 import { createDagJose } from './dag-jose'
 import { createCompact } from './compact'
+import type { IPFS } from 'ipfs-core-types'
 
 /**
  * List of allowed codecs based on codec code reference.
@@ -18,9 +19,9 @@ enum Codec {
  * @return The matched decoder creator.
  * @throws if the provided codec is not supported.
  */
-function getDecoderFromCodec (codec: Codec): DecoderCreator {
+function getDecoderFromCodec (codec: Codec): Creator<IPFS, Decoder> {
   // Map record of allowed decoders.
-  const codecDecoders: Record<Codec, DecoderCreator> = {
+  const codecDecoders = {
     [Codec.DagJose]: createDagJose,
     [Codec.Raw]: createCompact
   }
