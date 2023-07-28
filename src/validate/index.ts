@@ -1,6 +1,6 @@
 import Ajv from 'ajv'
 import { calculateJwkThumbprint, JWK } from 'jose'
-import schemaTpl from '@/validate/schema.json'
+import schemaTpl from './schema.json'
 
 const ajv = new Ajv({ allErrors: true })
 export const validStandard = ajv.compile(schemaTpl)
