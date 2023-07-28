@@ -19,8 +19,9 @@ Dendrite is available as a NPM package.
 
 `npm install dendritejs`
 
-
 ## Usage
+
+You can start using dendrite with a few lines of code:
 
 ```typescript
 import {create} from 'ipfs-core'
@@ -29,18 +30,39 @@ import dendrite from 'dendritejs'
 const node = await create()
 const decoder = dendrite(node)
 
-const dagJose = 'bagcqcerann63enqn2vssm6gko624gojakrswyppm56rao7m6e6vfnvtcxzha'
-const decoded = await decoder(dagJose)
+try {
 
-// ... 
-const mediaType = decoded.type() 
-const payload = decoded.metadata() 
+  // 1 - Auto-detect the serialization and apply the right strategy to fetch and decode the metadata.
+  // 2 - The signature is validated using the embedded JWK public key.
+  // 3 - The metadata schema is validated.
+  // 4 - Returns a standard standard interface.
+  const dagJoseCID = 'bagcqcerann63enqn2vssm6gko624gojakrswyppm56rao7m6e6vfnvtcxzha'
+  const decoded = await decoder(dagJoseCID)
 
-// fingerprint verification with shared fingerprint
-const expectedFingerprint = 'aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a'
-const validFingerprint = decoded.validate(expectedFingerprint)
+  const mediaType = decoded.type() 
+  const payload = decoded.metadata() 
+
+  // fingerprint verification with shared fingerprint
+  const expectedFingerprint = 'aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a'
+  const validFingerprint = decoded.validate(expectedFingerprint)
+
+} catch(e) {
+  // A TypeError is thrown if any error is encountered during validation or decoding.
+}
 
 ```
+
+## Development
+
+Some available capabilities for dev support:
+
+* **Install**: `make install`
+* **Tests**: `make test`
+* **Lint**: `make lint`
+* **Lint Fix**: `make format`
+
+Note: Run `make help` to check for more capabilities.  
+
 ## References
 
 * [Multiformats JS Library](https://github.com/multiformats/js-multiformats)
