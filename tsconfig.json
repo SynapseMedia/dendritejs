@@ -12,10 +12,9 @@
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "removeComments": true,
     "verbatimModuleSyntax": false,
-    "lib": ["ES2017", "DOM", "ES2018.asynciterable"],
     "skipLibCheck": true,
     "baseUrl": "./",
     "types": ["node"],
@@ -27,7 +26,7 @@
   },
   "include": [
     "src/*",
-    "src/*.d.ts"
+    "src/*.d.ts",
   ],
   "exclude": [
     "node_modules",

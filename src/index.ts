@@ -26,8 +26,9 @@ import { CID } from 'multiformats/cid'
 import { validStandard } from '@/validate/index.js'
 import { getDecoderFromCodec } from '@/decoders/index.js'
 
-import type { IPFS } from 'ipfs-core'
+import type { IPFS } from 'ipfs-core-types'
 import type { Codec } from '@/decoders'
+
 
 /**
  * The Impulse API is a standardized interface for handling retrieved metadata.
@@ -57,19 +58,6 @@ export interface Impulse {
    */
   validate: (fingerprint: string) => boolean
 }
-
-
-export type { 
-  Creator, 
-  Decoder, 
-  Decoded, 
-  SEP001, 
-  Payload, 
-  Header, 
-  Structural, 
-  Descriptive, 
-  Technical
- } from "./types.d";
 
 
 /**
