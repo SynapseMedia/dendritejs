@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/SynapseMedia/dendritejs/compare/v0.1.4...v0.1.5) (2023-07-28)
+
+
+### Bug Fixes
+
+* imvalid type export ([f9150cb](https://github.com/SynapseMedia/dendritejs/commit/f9150cbfe131fc8744d35c5d7ceb26d48c9644ea))
+
 ### [0.1.4](https://github.com/SynapseMedia/dendritejs/compare/v0.1.3...v0.1.4) (2023-07-28)
 
 ### [0.1.3](https://github.com/SynapseMedia/dendritejs/compare/v0.1.2...v0.1.3) (2023-07-28)
