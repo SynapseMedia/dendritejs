@@ -1,6 +1,6 @@
 {
   "name": "dendritejs",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Retrieval and validation of SEP-001 standard",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,6 +15,12 @@
     "url": "https://github.com/SynapseMedia/dendritejs/issues"
   },
   "homepage": "https://github.com/SynapseMedia/dendritejs#readme",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "devDependencies": {
     "@commitlint/config-conventional": "^17.6.6",
     "@types/node": "^20.4.2",
