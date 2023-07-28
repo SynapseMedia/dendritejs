@@ -1,5 +1,5 @@
-import { createDagJose } from './dag-jose'
-import { createCompact } from './compact'
+import { createDagJose } from './dag-jose.js'
+import { createCompact } from './compact.js'
 import type { IPFS } from 'ipfs-core-types'
 
 /**

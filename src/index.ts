@@ -23,8 +23,8 @@
 
 import { CID } from 'multiformats/cid'
 
-import { validStandard } from '@/validate'
-import { getDecoderFromCodec } from '@/decoders'
+import { validStandard } from '@/validate/index.js'
+import { getDecoderFromCodec } from '@/decoders/index.js'
 
 import type { IPFS } from 'ipfs-core'
 import type { Codec } from '@/decoders'
@@ -64,7 +64,7 @@ export interface Impulse {
  * @param node - The IPFS node to use for resolving the metadata .
  * @returns A promise that resolves with the SEP001 metadata representation.
  */
-export function dendrite (node: IPFS): Creator<string, Promise<Impulse>> {
+export default function dendrite (node: IPFS): Creator<string, Promise<Impulse>> {
   /**
    * Resolve the metadata from the provided CID.
    *

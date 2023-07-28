@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "ESNext",
+    "target": "ES2019",
     "module": "ES2020",
     "outDir": "dist",
     "declaration": true,
@@ -15,6 +15,7 @@
     "sourceMap": false,
     "removeComments": true,
     "verbatimModuleSyntax": false,
+    "lib": ["ES2017", "DOM", "ES2018.asynciterable"],
     "skipLibCheck": true,
     "baseUrl": "./",
     "types": ["node"],
