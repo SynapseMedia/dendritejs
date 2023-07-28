@@ -58,6 +58,20 @@ export interface Impulse {
   validate: (fingerprint: string) => boolean
 }
 
+
+export type { 
+  Creator, 
+  Decoder, 
+  Decoded, 
+  SEP001, 
+  Payload, 
+  Header, 
+  Structural, 
+  Descriptive, 
+  Technical
+ } from "./types.d";
+
+
 /**
  * Return function that resolves SEP001 standard metadata from a provided CID using the given IPFS node.
  *
@@ -99,3 +113,4 @@ export default function dendrite (node: IPFS): Creator<string, Promise<Impulse>>
     }
   }
 }
+

@@ -71,4 +71,4 @@ declare global {
 
 }
 
-export { }
+export { Creator, Decoder, Decoded, SEP001, Payload, Header, Structural, Descriptive, Technical }
