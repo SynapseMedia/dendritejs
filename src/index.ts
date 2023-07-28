@@ -21,7 +21,6 @@
  * ```
  */
 
-import { create } from 'ipfs-core'
 import { CID } from 'multiformats/cid'
 
 import { validStandard } from '@/validate'
@@ -31,7 +30,7 @@ import type { IPFS } from 'ipfs-core'
 import type { Codec } from '@/decoders'
 
 /**
- * The standard Impulse API for handling metadata.
+ * The Impulse API is a standardized interface for handling retrieved metadata.
  */
 export interface Impulse {
   /**
@@ -100,24 +99,3 @@ export function dendrite (node: IPFS): Creator<string, Promise<Impulse>> {
     }
   }
 }
-
-(async () => {
-  // const dagCid = 'bagcqceraldl3mw72pvte7p77vbspq7umcbxxnxzoqrzkb26xmekwd3j3mgza'
-  // const compact = 'bafkreidb7uq7vdxhmkstdfgky5gh7vh5t7rordkoamjvf4o6buubbdu3da'
-  // BAD CIDs above!
-
-  // const dagJose = 'bagcqcerann63enqn2vssm6gko624gojakrswyppm56rao7m6e6vfnvtcxzha'
-  const compact = 'bafkreifphflffiwa2ocqy4skadu6whhqiv2ax2rfqzcysj65uzplfbv6za'
-
-  // ipfs node
-  const node = await create()
-
-  // dendrite standard retrieval
-  const retriever = dendrite(node)
-  const decoded = await retriever(compact)
-
-  console.log(decoded.type()) // the media mime type represented in metadata
-  console.log(decoded.metadata()) // payload {structural,descriptive,technical} metadata
-  // fingerprint verification with shared fingerprint
-  console.log(decoded.validate('aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a'))
-})()

@@ -21,7 +21,7 @@ testcov:
 	
 .PHONY: build ## compile typescript to /build
 build:
-	tsc --config=tscconfig.json
+	tsc -p tsconfig.json
 
 .PHONY: clean ## clean installation and dist files
 clean:

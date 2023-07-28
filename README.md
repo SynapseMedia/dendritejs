@@ -1,42 +1,48 @@
-# Requirements Document - Dendrite
-
-## Introduction
+# Dendrite
 
 Dendrite is a tool designed for the retrieval and validation of the SEP-001 standard. Its main goal is to provide a user-friendly and easy-to-use interface to interact with the standard.
 
-## Technical Requirements
+## Key features
 
-1. Initialization of the library with the CID corresponding to the standard:
-   - The tool should allow the initialization of the library by providing the CID corresponding to the SEP-001 standard.
+* Fetches metadata from the Meta Lake (IPFS).
+* Automatically detects the serialization format of the metadata and applies the appropriate strategy to fetch and decode it.
+* Validates the metadata's signature to ensure its authenticity and integrity.
+* Verifies that the retrieved metadata adheres to the defined schema, ensuring its correctness and compliance with standards.
+* Provides a standardized interface for interacting with the metadata, allowing users to:
+  * Validate the fingerprint of the metadata.
+  * Determine the type of multimedia represented by the metadata.
+  * Handle and manage the results of the payload recovered from the metadata.
 
-2. Retrieval of the CID from the IPFS network:
-   - The tool should be capable of retrieving the CID from the IPFS network using the DAG or Block services.
+## Install
 
-3. Determination of the serialization type using the multiformat codec:
-   - The tool should be capable of determining the serialization type (e.g., dag-jose, raw) using the multiformat codec.
+Dendrite is available as a NPM package.
 
-4. Implementation of modules for each serialization type:
-   - For each serialization type, a module should be implemented, each one implementing an interface (e.g., "Serialization", "Codec", etc.).
-   - The interface should specify methods/properties that facilitate the navigation through the content of the "claims" in the SEP-001 standard.
-   - Each module should be capable of validating the schema of the SEP-001 standard, including the "claims", data types, etc.
-   - Each module should be capable of validating the signature in the serialization format. If the token does not contain a signature, it should be considered invalid.
-   - If a public key is not detected in the serialization, the validation method should require passing the public key as a parameter.
+`npm install dendritejs`
 
-5. Client interface based on serialization and deserialization results:
-   - A client interface should be implemented to provide a user-friendly and easy-to-use interface.
-   - The client interface should be based on the detected serialization and the results obtained from the deserialization process.
 
-## Expected Deliverables
+## Usage
 
-- The library should be compatible with browser and node.
-- Clean and well-documented source code in TypeScript and Node.js (github repo).
-- Technical documentation describing the architecture and functionality of the tool, including details on the implementation of SEP-001 and any integration with Multiformats and IPFS.
-- Unit and integration tests demonstrating the functionality and validity of the tool.
+```typescript
+import {create} from 'ipfs-core'
+import dendrite from 'dendritejs'
 
+const node = await create()
+const decoder = dendrite(node)
+
+const dagJose = 'bagcqcerann63enqn2vssm6gko624gojakrswyppm56rao7m6e6vfnvtcxzha'
+const decoded = await decoder(dagJose)
+
+// ... 
+const mediaType = decoded.type() 
+const payload = decoded.metadata() 
+
+// fingerprint verification with shared fingerprint
+const expectedFingerprint = 'aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a'
+const validFingerprint = decoded.validate(expectedFingerprint)
+
+```
 ## References
 
-- [Multiformats JS Library](https://github.com/multiformats/js-multiformats)
-- [DAG Service Documentation](https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/DAG.md)
-- [Block Service Documentation](https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/BLOCK.md)
-
-This requirements document defines the key technical aspects of the Dendrite tool, providing a guide for the development and implementation of the software. \
+* [Multiformats JS Library](https://github.com/multiformats/js-multiformats)
+* [DAG Service Documentation](https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/DAG.md)
+* [Block Service Documentation](https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/BLOCK.md)
