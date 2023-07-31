@@ -1,6 +1,6 @@
 import Ajv from 'ajv'
 import { calculateJwkThumbprint, JWK } from 'jose'
-import { Buffer } from 'buffer/'
+import { Buffer } from 'buffer/index.js'
 import schemaTpl from './schema.js'
 
 const ajv = new Ajv({ allErrors: true })
