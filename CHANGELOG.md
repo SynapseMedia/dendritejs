@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.17](https://github.com/SynapseMedia/dendritejs/compare/v0.1.16...v0.1.17) (2023-07-31)
+
+
+### Bug Fixes
+
+* implicit any record for map blocks in test ([0783da2](https://github.com/SynapseMedia/dendritejs/commit/0783da2514a166159b70452cc21f596abc777588))
+
 ### [0.1.16](https://github.com/SynapseMedia/dendritejs/compare/v0.1.15...v0.1.16) (2023-07-31)
 
 
