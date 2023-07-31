@@ -53,6 +53,10 @@ lint:
 release:
 	npx standard-version
 
+.PHONE: publish
+publish: release ## publish a version
+	git push --follow-tags origin main && npm publish
+
 rebuild: clean deps
 all: test lint
 
