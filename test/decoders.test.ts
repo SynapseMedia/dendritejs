@@ -13,7 +13,7 @@ const invalidHeader = 'eyJhbGciOiJFUzI1NksiLCJqd2siOnsiYWxnIjoiRVMyNTZLIiwiY3J2I
 const invalidPayload = 'eyJhbGciOiJFUzI1NiIsImp3ayI6eyJhbGciOiJFUzI1NiIsImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ1c2UiOiJzaWciLCJ4IjoiYnNia1owNWlwaC1wNUdGWjhlaEFIbjJtYzR6N0hJU0F0cjJGRFRldERpSSIsInkiOiJpME9kRmRsNVo4OGxjOVh2WWZMMmJIUzlYV1N1LTBvdlRsaC1HRU5DVDAwIn0sInR5cCI6ImFwcGxpY2F0aW9uL3ZuZC5hcHBsZS5tcGVndXJsIn0.e30.SdTdMlRe0q6AcAGY4r_JnTnkFcazZl_DgwovbbaJ9rxqSZGocnwZ61zHCUy1kplYQ_EapwPXN1AsTlPsHZBDEw'
 
 // Expected results from ipfs block get during compact decoding
-const mapBlocks = {
+const mapBlocks: Record<string, any> = {
 
   bafkreifphflffiwa2ocqy4skadu6whhqiv2ax2rfqzcysj65uzplfbv6za: compact,
   bagcqcerann63enqn2vssm6gko624gojakrswyppm56rao7m6e6vfnvtcxzha: dagJose,
