@@ -50,6 +50,7 @@ export const createDagJose = (node: IPFS): Decoder => {
       if (err instanceof TypeError || err.name === 'JWSInvalid') {
         // This exception is raised by jose when JWK is not present or is an invalid token.
         // It's better understand a clear reason why this exception..
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new TypeError(`Unexpected header: ${err.message}`)
       }
 

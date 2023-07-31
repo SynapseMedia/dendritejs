@@ -84,7 +84,7 @@ export default function dendrite (node: IPFS): Creator<string, Promise<Impulse>>
     if (!validStandard(decoded.standard)) {
       throw new TypeError(
         `CID resolves an invalid SEP001 standard implementation.
-        ${validStandard.errors?.map((e, i) => `"${i + 1} - ${e.message}"\n\t`).join('')}
+        ${validStandard.errors?.map((e, i) => `"${i + 1} - ${e.message ?? ''}"\n\t`).join('') ?? ''}
         `
       )
     }

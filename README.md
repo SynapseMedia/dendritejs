@@ -39,8 +39,8 @@ try {
   const dagJoseCID = 'bagcqcerann63enqn2vssm6gko624gojakrswyppm56rao7m6e6vfnvtcxzha'
   const decoded = await decoder(dagJoseCID)
 
-  const mediaType = decoded.type() 
-  const payload = decoded.metadata() 
+  const mediaType = decoded.type() // eg. application/vnd.apple.mpegurl
+  const payload = decoded.metadata() // {s,t,d} standard SEP-001 payload
 
   // fingerprint verification with shared fingerprint
   const expectedFingerprint = 'aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a'
