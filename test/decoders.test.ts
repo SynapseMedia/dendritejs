@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { createCompact, createDagJose, getDecoderFromCodec, Codec } from '../src/decoders';
 import fixturePayload from './fixtures/payload.json'
 
-import type {IPFS} from 'ipfs-core'
+import type { IPFS } from 'ipfs-core-types'
 
 const compact = `eyJhbGciOiJFUzI1NiIsImp3ayI6eyJhbGciOiJFUzI1NiIsImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ1c2UiOiJzaWciLCJ4IjoidjZkRU9Bb2M2eXFnd3owdHFkUzlNdUtORFZpVTFKTS1aMzMwdjJWZmN5NCIsInkiOiJYRmRmNkdQX1RNbTdVMlAweEoxRzVPZnVzdGNmT2VIZmN2eHJRc3lRT3lvIn0sInR5cCI6ImFwcGxpY2F0aW9uL3ZuZC5hcHBsZS5tcGVndXJsIn0.eyJkIjogImJhZmtyZWlnNnlkd3dubDQzcnFrNmxyazJ4eWtmd2tlbWI3dHNwYWp5NXJpeGt2ZTNsbXptdTU2ZWFhIiwgInQiOiAiYmFma3JlaWdsNW9weXd5a3Z4c3Z6enpuZGFxNWdlM2x4cmZ1dmgyaWZxM2JvYjVyYng3aTZ4cHJzcHEiLCAicyI6ICJiYWZrcmVpZ2l2bXhsZGVnYTUzYnRkeWtqbDZtNWthNnN4bHNtcW9uYzRyYnB3ZmkyZW11dm8yZWJudSJ9.Fe0fvT6O6jFLaR8eOuyU8sqBU_ZxbLSA413EyjNBLSlXNwEEZM1Qup252DEcLIHLwqTgTXY1x1qsEpqN5OjmiA`
 const dagJose = { "link": { "/": "bafyreihk6pijoyutsgzkrzw7ctn5e6mcqxb7pljockvjsjt3e2iyz5m2s4" }, "payload": "AXESIOrz0Jdik5GyqObfFNvSeYKFw_etLhKqmSZ7JpGM9ZqX", "signatures": [{ "protected": "eyJhbGciOiJFUzI1NiIsImp3ayI6eyJhbGciOiJFUzI1NiIsImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ1c2UiOiJzaWciLCJ4IjoiU2FHTXJWalczWVZoUHhiNzJjV05maW9MUnFYTXg0eDRzSkhRSjNpUGZPUSIsInkiOiJWZTJ4N0M3N20yV3paQjRyRUNhQXVNSW5xbzNsek1ibnJsZGVIYXViZEtnIn0sInR5cCI6ImFwcGxpY2F0aW9uL3ZuZC5hcHBsZS5tcGVndXJsIn0", "signature": "8w7dSt8Fy2eYVs-MtPp4EFDcFGSGXwJjTLlRDapXzYY-ZCDHwDiX-TWHYr4vrGMsmnwfQMJsEN7x0_c7wZ99Yg" }] }
@@ -127,19 +127,19 @@ describe('Decoders', () => {
         })
 
 
-        it("should return the expected decoder based on input codec", ()=> {
-            const dagJose = getDecoderFromCodec(Codec.DagJose)
-            const compact = getDecoderFromCodec(Codec.Raw)
+    it("should return the expected decoder based on input codec", () => {
+        const dagJose = getDecoderFromCodec(Codec.DagJose)
+        const compact = getDecoderFromCodec(Codec.Raw)
 
-            expect(dagJose).toBe(createDagJose) 
-            expect(compact).toBe(createCompact) 
-        })
+        expect(dagJose).toBe(createDagJose)
+        expect(compact).toBe(createCompact)
+    })
 
-        it("should throws error if invalid codec is provided", ()=> {
-            expect(()=>{
-                // @ts-expect-error
-                getDecoderFromCodec("0x00")
-            }).toThrowError()
-        })
+    it("should throws error if invalid codec is provided", () => {
+        expect(() => {
+            // @ts-expect-error
+            getDecoderFromCodec("0x00")
+        }).toThrowError()
+    })
 })
 

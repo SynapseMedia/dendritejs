@@ -1,7 +1,7 @@
 import { generalVerify, EmbeddedJWK, GeneralJWSInput, JWK } from 'jose'
 import { validPayloadClaims, fingerprintFromJWK } from '@/validate/index.js'
-import { CID } from 'multiformats'
 
+import { CID } from 'multiformats'
 import type { IPFS } from 'ipfs-core-types'
 
 /**
