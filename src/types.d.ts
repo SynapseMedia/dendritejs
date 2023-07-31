@@ -1,6 +1,5 @@
 import type { JWK } from 'jose'
 import type { CID } from 'multiformats'
-import type { IPFS } from 'ipfs-core-types'
 
 declare global {
 

@@ -1,149 +1,149 @@
 export default {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "SEP-001 schema",
-  "type": "object",
-  "required": [
-    "header",
-    "payload"
+  $schema: 'http://json-schema.org/draft-07/schema#',
+  title: 'SEP-001 schema',
+  type: 'object',
+  required: [
+    'header',
+    'payload'
   ],
-  "properties": {
-    "header": {
-      "$ref": "#/definitions/Header"
+  properties: {
+    header: {
+      $ref: '#/definitions/Header'
     },
-    "payload": {
-      "$ref": "#/definitions/Payload"
+    payload: {
+      $ref: '#/definitions/Payload'
     }
   },
-  "definitions": {
-    "JWK": {
-      "additionalProperties": {},
-      "description": "JSON Web Key ( {@link  https://www.rfc-editor.org/rfc/rfc7517 JWK } ). \"RSA\", \"EC\", \"OKP\", and \"oct\" key types are supported.",
-      "properties": {
-        "alg": {
-          "description": "JWK \"alg\" (Algorithm) Parameter.",
-          "type": "string"
+  definitions: {
+    JWK: {
+      additionalProperties: {},
+      description: 'JSON Web Key ( {@link  https://www.rfc-editor.org/rfc/rfc7517 JWK } ). "RSA", "EC", "OKP", and "oct" key types are supported.',
+      properties: {
+        alg: {
+          description: 'JWK "alg" (Algorithm) Parameter.',
+          type: 'string'
         },
-        "crv": {
-          "type": "string"
+        crv: {
+          type: 'string'
         },
-        "kty": {
-          "description": "JWK \"kty\" (Key Type) Parameter.",
-          "type": "string"
+        kty: {
+          description: 'JWK "kty" (Key Type) Parameter.',
+          type: 'string'
         },
-        "use": {
-          "description": "JWK \"use\" (Public Key Use) Parameter.",
-          "type": "string"
+        use: {
+          description: 'JWK "use" (Public Key Use) Parameter.',
+          type: 'string'
         },
-        "x": {
-          "type": "string"
+        x: {
+          type: 'string'
         },
-        "y": {
-          "type": "string"
+        y: {
+          type: 'string'
         }
       },
-      "required": [
-        "x",
-        "y",
-        "alg",
-        "kty",
-        "use",
-        "crv"
+      required: [
+        'x',
+        'y',
+        'alg',
+        'kty',
+        'use',
+        'crv'
       ],
-      "type": "object"
+      type: 'object'
     },
-    "Descriptive": {
-      "additionalProperties": true,
-      "description": "Descriptive metadata MUST represent information that describes the content of a multimedia resource.",
-      "properties": {
-        "description": {
-          "type": "string"
+    Descriptive: {
+      additionalProperties: true,
+      description: 'Descriptive metadata MUST represent information that describes the content of a multimedia resource.',
+      properties: {
+        description: {
+          type: 'string'
         },
-        "title": {
-          "type": "string"
+        title: {
+          type: 'string'
         }
       },
-      "required": [
-        "title",
-        "description"
+      required: [
+        'title',
+        'description'
       ],
-      "type": "object"
+      type: 'object'
     },
-    "Header": {
-      "additionalProperties": false,
-      "description": "SEP-001 header  representation.",
-      "properties": {
-        "jwk": {
-          "$ref": "#/definitions/JWK"
+    Header: {
+      additionalProperties: false,
+      description: 'SEP-001 header  representation.',
+      properties: {
+        jwk: {
+          $ref: '#/definitions/JWK'
         },
-        "typ": {
-          "type": "string"
+        typ: {
+          type: 'string'
         },
-        "alg": {
-          "type": "string"
+        alg: {
+          type: 'string'
         }
       },
-      "required": [
-        "typ",
-        "jwk",
-        "alg"
+      required: [
+        'typ',
+        'jwk',
+        'alg'
       ],
-      "type": "object"
+      type: 'object'
     },
-    "Payload": {
-      "additionalProperties": false,
-      "description": "SEP-001 payload representation.",
-      "properties": {
-        "d": {
-          "$ref": "#/definitions/Descriptive"
+    Payload: {
+      additionalProperties: false,
+      description: 'SEP-001 payload representation.',
+      properties: {
+        d: {
+          $ref: '#/definitions/Descriptive'
         },
-        "s": {
-          "$ref": "#/definitions/Structural"
+        s: {
+          $ref: '#/definitions/Structural'
         },
-        "t": {
-          "$ref": "#/definitions/Technical"
+        t: {
+          $ref: '#/definitions/Technical'
         }
       },
-      "required": [
-        "d",
-        "s",
-        "t"
+      required: [
+        'd',
+        's',
+        't'
       ],
-      "type": "object"
+      type: 'object'
     },
-    "Structural": {
-      "additionalProperties": false,
-      "description": "Structural metadata MUST represent information that describes the internal structure of a multimedia resource.",
-      "properties": {
-        "cid": {
-          "type": "string"
+    Structural: {
+      additionalProperties: false,
+      description: 'Structural metadata MUST represent information that describes the internal structure of a multimedia resource.',
+      properties: {
+        cid: {
+          type: 'string'
         },
-        "path": {
-          "type": "string"
+        path: {
+          type: 'string'
         }
       },
-      "required": [
-        "cid"
+      required: [
+        'cid'
       ],
-      "type": "object"
+      type: 'object'
     },
-    "Technical": {
-      "additionalProperties": true,
-      "description": "Technical metadata MUST represent information that describes the technical characteristics of a multimedia resource.",
-      "properties": {
-        "height": {
-          "type": "number"
+    Technical: {
+      additionalProperties: true,
+      description: 'Technical metadata MUST represent information that describes the technical characteristics of a multimedia resource.',
+      properties: {
+        height: {
+          type: 'number'
         },
-        "length": {
-          "type": "number"
+        length: {
+          type: 'number'
         },
-        "size": {
-          "type": "number"
+        size: {
+          type: 'number'
         },
-        "width": {
-          "type": "number"
+        width: {
+          type: 'number'
         }
       },
-      "type": "object"
+      type: 'object'
     }
   }
 }

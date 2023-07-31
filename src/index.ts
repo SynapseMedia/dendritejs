@@ -14,7 +14,7 @@
  * const node = await create()
  * const decoder = dendrite(node)
  * const decoded = await decoder(compact)
- * 
+ *
  * const expectedFingerprint = 'aba44a9673c452de6183c82919de2cdb8b830615e9ac684841502ba7173ee00a'
  * const validFingerprint = decoded.validate(expectedFingerprint)
  * ...
@@ -28,7 +28,6 @@ import { getDecoderFromCodec } from '@/decoders/index.js'
 
 import type { IPFS } from 'ipfs-core-types'
 import type { Codec } from '@/decoders'
-
 
 /**
  * The Impulse API is a standardized interface for handling retrieved metadata.
@@ -58,7 +57,6 @@ export interface Impulse {
    */
   validate: (fingerprint: string) => boolean
 }
-
 
 /**
  * Return function that resolves SEP001 standard metadata from a provided CID using the given IPFS node.
@@ -101,4 +99,3 @@ export default function dendrite (node: IPFS): Creator<string, Promise<Impulse>>
     }
   }
 }
-
