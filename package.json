@@ -1,6 +1,6 @@
 {
   "name": "dendritejs",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Retrieval and validation of SEP-001 standard",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -36,6 +36,7 @@
     "ajv": "^8.12.0",
     "buffer": "^6.0.3",
     "ipfs-core": "^0.16.0",
+    "ipfs-core-types": "^0.14.1",
     "jose": "^4.14.4",
     "multiformats": "^12.0.1"
   }
