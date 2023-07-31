@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/SynapseMedia/dendritejs/compare/v0.1.10...v0.1.11) (2023-07-31)
+
+
+### Bug Fixes
+
+* buffer cross support ([262d549](https://github.com/SynapseMedia/dendritejs/commit/262d549ee066f38c668d4276d2cf15589db9c714))
+
 ### [0.1.10](https://github.com/SynapseMedia/dendritejs/compare/v0.1.9...v0.1.10) (2023-07-28)
 
 ### [0.1.9](https://github.com/SynapseMedia/dendritejs/compare/v0.1.8...v0.1.9) (2023-07-28)
