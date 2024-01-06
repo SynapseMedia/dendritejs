@@ -5,7 +5,7 @@ import { CID } from 'multiformats'
 import type { IPFS } from 'ipfs-core-types'
 
 /**
- * Creates a Compact decoder .
+ * Creates a Compact decoder.
  *
  * @param node - The connected ipfs node to use for metadata retrieval.
  * @return A Compact serialization decoder.
@@ -51,9 +51,12 @@ export const createCompact = (node: IPFS): Decoder => {
       const fingerprint = await fingerprintFromJWK(protectedHeader.jwk as JWK)
       const rawPayload = validPayloadClaims(JSON.parse(stringPayload))
 
-      const s = await fetchCompactAsJSON<Structural>(CID.parse(rawPayload.s))
-      const d = await fetchCompactAsJSON<Descriptive>(CID.parse(rawPayload.d))
-      const t = await fetchCompactAsJSON<Technical>(CID.parse(rawPayload.t))
+      // Concurrent retrieve payload
+      const [s, d, t] = await Promise.all([
+        fetchCompactAsJSON<Structural>(CID.parse(rawPayload.s)),
+        fetchCompactAsJSON<Descriptive>(CID.parse(rawPayload.d)),
+        fetchCompactAsJSON<Technical>(CID.parse(rawPayload.t))
+      ])
 
       return {
         fingerprint,
